@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decision Pilot IA</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Decision<strong>Pilot</strong> <em>IA</em></span>
+      </div>
+      <p class="header-sub">Estructura decisiones complejas con inteligencia artificial razonada</p>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- PASO 1: Selección de caso -->
+    <section class="step" id="step-caso">
+      <div class="step-label"><span>01</span> Selecciona el caso</div>
+      <div class="caso-grid">
+        <button class="caso-card active" data-caso="admision">
+          <span class="caso-icon">🎓</span>
+          <span class="caso-title">Admisión y Becas<br>Universitarias</span>
+        </button>
+        <button class="caso-card" data-caso="tickets">
+          <span class="caso-icon">🖥️</span>
+          <span class="caso-title">Tickets de<br>Soporte TI</span>
+        </button>
+        <button class="caso-card" data-caso="ecommerce">
+          <span class="caso-icon">📦</span>
+          <span class="caso-title">Devoluciones y<br>Fraude E-commerce</span>
+        </button>
+        <button class="caso-card" data-caso="documentacion">
+          <span class="caso-icon">📚</span>
+          <span class="caso-title">Documentación<br>Corporativa</span>
+        </button>
+      </div>
+      <div class="caso-desc-box">
+        <p id="caso-descripcion"></p>
+        <button class="btn-secondary" id="btn-cargar-ejemplo">↙ Cargar datos de ejemplo</button>
+      </div>
+    </section>
+
+    <!-- PASO 2: Formulario -->
+    <section class="step" id="step-form">
+      <div class="step-label"><span>02</span> Introduce el contexto</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="campo-contexto">Contexto de la situación</label>
+          <textarea id="campo-contexto" rows="4" placeholder="Describe la organización, el proceso actual, el volumen de operaciones y el problema que quieres resolver..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="campo-decision">Decisión a tomar</label>
+          <textarea id="campo-decision" rows="3" placeholder="¿Qué decisión concreta necesitas tomar? Sé específico sobre el alcance y el plazo."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="campo-datos">Datos disponibles</label>
+          <textarea id="campo-datos" rows="3" placeholder="Lista los datos, métricas y cifras que tienes: volúmenes, tasas, tiempos, costes..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="campo-restricciones">Restricciones y condiciones</label>
+          <textarea id="campo-restricciones" rows="3" placeholder="Señala límites de presupuesto, requisitos legales, plazos, sensibilidad de datos, necesidad de revisión humana..."></textarea>
+        </div>
+      </div>
+
+      <div class="aviso">
+        <span class="aviso-icon">⚠</span>
+        <span>No introduzcas datos personales reales, contraseñas ni información confidencial. Esta app genera prompts para copiar en una IA externa.</span>
+      </div>
+    </section>
+
+    <!-- PASO 3: Generar -->
+    <section class="step" id="step-generar">
+      <div class="step-label"><span>03</span> Genera y usa el prompt</div>
+      <div class="btn-row">
+        <button class="btn-primary" id="btn-generar">◈ Generar prompt estructurado</button>
+        <button class="btn-secondary" id="btn-copiar" disabled>⎘ Copiar al portapapeles</button>
+        <button class="btn-ghost" id="btn-limpiar">✕ Limpiar campos</button>
+      </div>
+
+      <div id="resultado-wrap" class="resultado-wrap hidden">
+        <div class="resultado-header">
+          <span class="resultado-label">Prompt generado — cópialo y pégalo en Claude, ChatGPT o cualquier IA</span>
+          <span class="resultado-caso-tag" id="resultado-caso-tag"></span>
+        </div>
+        <pre id="resultado-texto" class="resultado-texto"></pre>
+      </div>
+
+      <div id="error-msg" class="error-msg hidden"></div>
+    </section>
+
+    <!-- Instrucciones de uso -->
+    <section class="instrucciones">
+      <div class="inst-title">¿Cómo funciona?</div>
+      <div class="inst-grid">
+        <div class="inst-item"><span class="inst-num">1</span><p>Selecciona uno de los cuatro casos del laboratorio</p></div>
+        <div class="inst-item"><span class="inst-num">2</span><p>Carga el ejemplo o escribe tu propio contexto</p></div>
+        <div class="inst-item"><span class="inst-num">3</span><p>Genera el prompt estructurado y cópialo</p></div>
+        <div class="inst-item"><span class="inst-num">4</span><p>Pégalo en la IA y evalúa la recomendación razonada</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>Decision Pilot IA · Laboratorio de toma de decisiones con IA</span>
+      <a href="https://github.com/" target="_blank" rel="noopener" id="footer-repo-link">Ver repositorio en GitHub ↗</a>
+    </div>
+  </footer>
+
+  <script src="prompts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
